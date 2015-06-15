@@ -1,0 +1,25 @@
+<div class="navbar-inner">
+					<% if user_signed_in? %>
+					<header id="sidebar-header">
+				        <% if current_user.avatar? %>
+				            <%= link_to(image_tag(current_user.avatar(:thumb)), profile_path(current_user)) %>
+				        <% else %>
+					        <%= link_to(image_tag(current_user.default_avatar_menu), profile_path(current_user)) %>
+				        <% end %>
+						<p><%= current_user.full_name %></p>
+					</header>
+					<% end %>
+					<nav>
+						<ul id="sidebar-links" class="nav">
+							<% if user_signed_in? %>
+								<li><%= link_to "Home", profile_path(current_user) %></li>
+							<% else %>
+								<li><%= link_to "Home", login_path %></li>
+							<% end %>
+						</ul>
+					</nav>
+					<footer>
+						<p><small>Powered by </small></p>
+						<p>Patrick Engine &reg</p>
+					</footer>
+				</div>
